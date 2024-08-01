@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Coin Wallet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Retail Coin Wallet</h1>
+    <form action="/get_balances" method="post">
+        <label for="address">Wallet Address:</label>
+        <input type="text" id="address" name="address" required>
+        <button type="submit">Get Balances</button>
+    </form>
+
+    {% if balances %}
+    <h2>Wallet Balances</h2>
+    <ul>
+        {% for balance in balances %}
+        <li>{{ balance.token }}: {{ balance.balance }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if tokens %}
+    <h2>Token Balances</h2>
+    <ul>
+        {% for token in tokens %}
+        <li>{{ token.token }}: {{ token.balance }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if token_prices %}
+    <h2>Token Balances with Prices</h2>
+    <ul>
+        {% for token in token_prices %}
+        <li>{{ token.token }}: {{ token.balance }} (Price: {{ token.price }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if allowance %}
+    <h2>ERC20 Token Allowance</h2>
+    <ul>
+        {% for item in allowance %}
+        <li>{{ item.token }}: {{ item.allowance }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
