@@ -1,2 +1,2 @@
-# RetailCoin
-RetailCoin coin crypto development using network solana
+# TestCoin
+TestCoin coin crypto development using network solana
